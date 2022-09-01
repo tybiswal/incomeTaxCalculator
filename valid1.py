@@ -23,10 +23,13 @@ tax_b5 = 30000000
 
 tax_rate = 0.00
 
+# tax rate identifier if-else statement
 if inc_relief <= tax_b1:
     tax_rate = 0.00
 elif tax_b1 < inc_relief <= tax_b2:
     tax_rate = 0.05
+    a_tax = (inc_relief - tax_b1) * tax_rate
+    print(a_tax/12)
 elif tax_b2 < inc_relief <= tax_b3:
     tax_rate = 0.10
 elif tax_b3 < inc_relief <= tax_b4:
