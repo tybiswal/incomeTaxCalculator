@@ -40,9 +40,15 @@ elif tax_b3 < inc_relief <= tax_b4:
     print(a_tax / 12)
 elif tax_b4 < inc_relief <= tax_b5:
     tax_rate = 0.20
-    a_tax = ((tax_b2 - tax_b1) * 0.05) + ((tax_b3 - tax_b2) * 0.1) + ((tax_b4 - tax_b3) * 0.15) + ((inc_relief - tax_b4) * tax_rate)
+    a_tax = ((tax_b2 - tax_b1) * 0.05) + ((tax_b3 - tax_b2) * 0.1) + ((tax_b4 - tax_b3) * 0.15) + ((inc_relief - tax_b4)
+                                                                                                   * tax_rate)
     print("\nYour Monthly Income Tax is: ")
     print(a_tax / 12)
 else:
     tax_rate = 0.25
-
+    a_tax = ((tax_b2 - tax_b1) * 0.05) + ((tax_b3 - tax_b2) * 0.1) + ((tax_b4 - tax_b3) * 0.15) + ((tax_b5 - tax_b4) *
+                                                                                                   0.2) + ((inc_relief -
+                                                                                                            tax_b5) *
+                                                                                                           tax_rate)
+    print("\nYour Monthly Income Tax is: ")
+    print(a_tax / 12)
