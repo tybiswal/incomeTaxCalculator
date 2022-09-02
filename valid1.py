@@ -1,15 +1,12 @@
 # Myanmar Income Tax Calculation
 import math
 
-print('Myanmar Income Tax Calculation')
-yearly_income = int(input('What is your yearly income in Myanmar? : '))
+print('\nMyanmar Income Tax Calculation')
+yearly_income = int(input('What is your yearly income in Myanmar? (Kyats): '))
 
-# 20% staff relief
-staff_relief_pc = 0.2
-# Staff relief is ->
-staff_relief = int(float(yearly_income) * staff_relief_pc)
-st_rf = "{:,}".format(staff_relief)
-print("\nStaff Relief is: \nKyats " + str(st_rf))
+# Staff relief is 20%->
+staff_relief = int(float(yearly_income) * 0.2)
+print("\nStaff Relief is: \nKyats " + str("{:,}".format(staff_relief)))
 
 # included parental, spousal & child reliefs
 concession = 0
@@ -36,8 +33,7 @@ else:
 
 # This gives us the assessable income
 inc_relief = yearly_income - staff_relief - concession
-inc_rf = "{:,}".format(inc_relief)
-print("Total Assessable Income is: \nKyats " + str(inc_rf))
+print("Total Assessable Income is: \nKyats " + str("{:,}".format(inc_relief)))
 
 # these are the tax brackets as per law
 tax_b1 = 2000000
@@ -73,7 +69,6 @@ else:
                                                                                                    0.2) + ((inc_relief -
                                                                                                             tax_b5) *
                                                                                                            tax_rate)
-
 # convert the tax value to integer, to remove the float and round up since currency doesn't support cents
 a_tax = int(math.ceil(a_tax))
 a_taxf = "{:,}".format(a_tax) # formats to include number commas
