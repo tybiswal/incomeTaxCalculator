@@ -1,22 +1,41 @@
 # Myanmar Income Tax Calculation
+import math
+
 print('Myanmar Income Tax Calculation')
 yearly_income = int(input('What is your yearly income in Myanmar? : '))
 
 # 20% staff relief
-staff_relief = 0.2
+staff_relief_pc = 0.2
+# Staff relief is ->
+staff_relief = int(float(yearly_income) * staff_relief_pc)
+st_rf = "{:,}".format(staff_relief)
+print("\nStaff Relief is: \nKyats " + str(st_rf))
 
-# here I will include parental, spousal & child relief in next iteration with boolean inputs later
+# included parental, spousal & child reliefs
+concession = 0
 f_stat = input("Are you supporting your Father through your income? (Y/N): ")
+if f_stat == "Y" or f_stat == "y":
+    concession += 1000000
+else:
+    print("No paternal concession.\n")
 m_stat = input("Are you supporting your Mother through your income? (Y/N): ")
+if m_stat == "Y" or m_stat == "y":
+    concession += 1000000
+else:
+    print("No maternal concession.\n")
 s_stat = input("Are you supporting your Spouse through your income? (Y/N): ")
+if s_stat == "Y" or s_stat == "y":
+    concession += 1000000
+else:
+    print("No spousal concession.\n")
 c_stat = input("Are you supporting your Child(ren) through your income? (Y/N): ")
-# total relief after staff deduction
-tot_relief = int(float(yearly_income)*staff_relief)
-tot_rf = "{:,}".format(tot_relief)
-print("\nTotal Relief is: \nKyats " + str(tot_rf))
+if c_stat == "Y" or c_stat == "y":
+    concession += 500000
+else:
+    print("No children concession.\n")
 
 # This gives us the assessable income
-inc_relief = yearly_income - tot_relief
+inc_relief = yearly_income - staff_relief - concession
 inc_rf = "{:,}".format(inc_relief)
 print("Total Assessable Income is: \nKyats " + str(inc_rf))
 
@@ -55,10 +74,10 @@ else:
                                                                                                             tax_b5) *
                                                                                                            tax_rate)
 
-# convert the tax value to integer, to remove the float since currency doesn't support cents and py should round up
-a_tax = int(a_tax)
+# convert the tax value to integer, to remove the float and round up since currency doesn't support cents
+a_tax = int(math.ceil(a_tax))
 a_taxf = "{:,}".format(a_tax) # formats to include number commas
-m_tax = int(a_tax / 12) # monthly value, if we divide by 12
+m_tax = int(math.ceil(a_tax / 12)) # monthly value, if we divide by 12
 m_taxf = "{:,}".format(m_tax)
 
 # Prints the annual and monthly income tax
