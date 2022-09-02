@@ -10,7 +10,6 @@ f_stat = input("Are you supporting your Father through your income? (Y/N): ")
 m_stat = input("Are you supporting your Mother through your income? (Y/N): ")
 s_stat = input("Are you supporting your Spouse through your income? (Y/N): ")
 c_stat = input("Are you supporting your Child(ren) through your income? (Y/N): ")
-
 # total relief after staff deduction
 tot_relief = int(float(yearly_income)*staff_relief)
 tot_rf = "{:,}".format(tot_relief)
