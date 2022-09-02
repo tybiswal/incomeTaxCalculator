@@ -7,7 +7,7 @@ staff_relief = 0.2
 # total relief after staff deduction
 tot_relief = int(float(yearly_income)*staff_relief)
 print(tot_relief)
-# will include parental, spousal & child relief in next iteration with boolean inputs\
+# will include parental, spousal & child relief in next iteration with boolean inputs
 # This gives us the assessable income
 inc_relief = yearly_income - tot_relief
 # these are the tax brackets as per law
