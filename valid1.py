@@ -13,7 +13,7 @@ print(tot_relief)
 
 # This gives us the assessable income
 inc_relief = yearly_income - tot_relief
-print(inc_relief)
+
 # these are the tax brackets as per law
 tax_b1 = 2000000
 tax_b2 = 5000000
