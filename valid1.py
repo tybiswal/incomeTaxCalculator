@@ -69,12 +69,13 @@ else:
                                                                                                    0.2) + ((inc_relief -
                                                                                                             tax_b5) *
                                                                                                            tax_rate)
+
 # convert the tax value to integer, to remove the float and round up since currency doesn't support cents
 a_tax = int(math.ceil(a_tax))
-a_taxf = "{:,}".format(a_tax) # formats to include number commas
-m_tax = int(math.ceil(a_tax / 12)) # monthly value, if we divide by 12
-m_taxf = "{:,}".format(m_tax)
+a_tax_f = "{:,}".format(a_tax)  # formats to include number commas
+m_tax = int(math.ceil(a_tax / 12))  # monthly value, if we divide by 12
+m_tax_f = "{:,}".format(m_tax)
 
 # Prints the annual and monthly income tax
-print("\nYour Annual Income Tax is: \nKyats " + a_taxf)
-print("Your Monthly Income Tax is: \nKyats " + m_taxf)
+print("\nYour Annual Income Tax is: \nKyats " + a_tax_f)
+print("Your Monthly Income Tax is: \nKyats " + m_tax_f)
