@@ -5,14 +5,16 @@ yearly_income = int(input('What is your yearly income in Myanmar? : '))
 # 20% staff relief
 staff_relief = 0.2
 
+# here I will include parental, spousal & child relief in next iteration with boolean inputs later
+f_stat = input("Are you supporting your Father through your income? (Y/N): ")
+m_stat = input("Are you supporting your Mother through your income? (Y/N): ")
+s_stat = input("Are you supporting your Spouse through your income? (Y/N): ")
+c_stat = input("Are you supporting your Child(ren) through your income? (Y/N): ")
+
 # total relief after staff deduction
 tot_relief = int(float(yearly_income)*staff_relief)
 tot_rf = "{:,}".format(tot_relief)
 print("\nTotal Relief is: \nKyats " + str(tot_rf))
-
-''' 
-here I will include parental, spousal & child relief in next iteration with boolean inputs later
-'''
 
 # This gives us the assessable income
 inc_relief = yearly_income - tot_relief
