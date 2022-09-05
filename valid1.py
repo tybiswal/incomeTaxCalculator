@@ -55,10 +55,10 @@ elif tax_b1 < inc_relief <= tax_b2:
     a_tax = (inc_relief - tax_b1) * tax_rate
 elif tax_b2 < inc_relief <= tax_b3:
     tax_rate = 0.10
-    a_tax = ((tax_b2-tax_b1) * 0.05) + ((inc_relief - tax_b2) * tax_rate)
+    a_tax = ((tax_b2 - tax_b1) * 0.05) + ((inc_relief - tax_b2) * tax_rate)
 elif tax_b3 < inc_relief <= tax_b4:
     tax_rate = 0.15
-    a_tax = ((tax_b2 - tax_b1) * 0.05) + ((tax_b3 - tax_b2) * 0.1)+((inc_relief - tax_b3) * tax_rate)
+    a_tax = ((tax_b2 - tax_b1) * 0.05) + ((tax_b3 - tax_b2) * 0.1) + ((inc_relief - tax_b3) * tax_rate)
 elif tax_b4 < inc_relief <= tax_b5:
     tax_rate = 0.20
     a_tax = ((tax_b2 - tax_b1) * 0.05) + ((tax_b3 - tax_b2) * 0.1) + ((tax_b4 - tax_b3) * 0.15) + ((inc_relief - tax_b4)
@@ -79,3 +79,5 @@ m_tax_f = "{:,}".format(m_tax)
 # Prints the annual and monthly income tax
 print("\nYour Annual Income Tax is: \nKyats " + a_tax_f)
 print("Your Monthly Income Tax is: \nKyats " + m_tax_f)
+
+X = input("\n--------------------\nPress Enter to Close")
