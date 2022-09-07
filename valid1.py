@@ -2,9 +2,9 @@
 import math
 
 
-def tax_calc():
+def tax_calc(y_i):
     # Staff relief is 20%->
-    staff_relief = int(float(yearly_income) * 0.2)
+    staff_relief = int(float(y_i) * 0.2)
     print("\nStaff Relief is: \nKyats " + str("{:,}".format(staff_relief)))
 
     # included parental, spousal & child reliefs
@@ -31,41 +31,37 @@ def tax_calc():
         print("No children concession.\n")
 
     # This gives us the assessable income
-    inc_relief = yearly_income - staff_relief - concession
+    inc_relief = y_i - staff_relief - concession
     print("Total Assessable Income is: \nKyats " + str("{:,}".format(inc_relief)))
 
     # these are the tax brackets as per law
     tax_b = [2000000, 5000000, 10000000, 20000000, 30000000]
+    tax_r = [0.05, 0.10, 0.15, 0.2, 0.25]
 
     # clears the variable whenever the code is rerun
-    tax_rate = 0.00
     a_tax = 0
 
     # tax rate identifier if-else statement
     if inc_relief <= tax_b[0]:
-        tax_rate = 0.00
         print("You owe no income tax!")
     elif tax_b[0] < inc_relief <= tax_b[1]:
-        tax_rate = 0.05
-        a_tax = (inc_relief - tax_b[0]) * tax_rate
+        a_tax = (inc_relief - tax_b[0]) * tax_r[0]
     elif tax_b[1] < inc_relief <= tax_b[2]:
-        tax_rate = 0.10
-        a_tax = ((tax_b[1] - tax_b[0]) * 0.05) + ((inc_relief - tax_b[1]) * tax_rate)
+        a_tax = ((tax_b[1] - tax_b[0]) * tax_r[0]) + ((inc_relief - tax_b[1]) * tax_r[1])
     elif tax_b[2] < inc_relief <= tax_b[3]:
-        tax_rate = 0.15
-        a_tax = ((tax_b[1] - tax_b[0]) * 0.05) + ((tax_b[2] - tax_b[1]) * 0.1) + ((inc_relief - tax_b[2]) * tax_rate)
+        a_tax = ((tax_b[1] - tax_b[0]) * tax_r[0]) + ((tax_b[2] - tax_b[1]) * tax_r[1]) + ((inc_relief - tax_b[2]) *
+                                                                                           tax_r[2])
     elif tax_b[3] < inc_relief <= tax_b[4]:
-        tax_rate = 0.20
-        a_tax = ((tax_b[1] - tax_b[0]) * 0.05) + ((tax_b[2] - tax_b[1]) * 0.1) + ((tax_b[3] - tax_b[2]) * 0.15) + (
-                (inc_relief - tax_b[3])
-                * tax_rate)
+        a_tax = ((tax_b[1] - tax_b[0]) * tax_r[0]) + ((tax_b[2] - tax_b[1]) * tax_r[1]) + ((tax_b[3] - tax_b[2]) *
+                                                                                           tax_r[2]) + ((inc_relief -
+                                                                                                         tax_b[3])
+                                                                                                        * tax_r[3])
     else:
-        tax_rate = 0.25
-        a_tax = ((tax_b[1] - tax_b[0]) * 0.05) + ((tax_b[2] - tax_b[1]) * 0.1) + ((tax_b[3] - tax_b[2]) * 0.15) + (
-                (tax_b[4] - tax_b[3]) *
-                0.2) + ((inc_relief -
-                         tax_b[4]) *
-                        tax_rate)
+        a_tax = ((tax_b[1] - tax_b[0]) * tax_r[0]) + ((tax_b[2] - tax_b[1]) * tax_r[1]) + ((tax_b[3] - tax_b[2]) *
+                                                                                           tax_r[2]) + ((tax_b[4] -
+                                                                                                         tax_b[3]) *
+                                                                                                        tax_r[3]) + \
+                ((inc_relief - tax_b[4]) * tax_r[4])
 
     # convert the tax value to integer, to remove the float and round up since currency doesn't support cents
     a_tax = int(math.ceil(a_tax))
@@ -81,9 +77,9 @@ def tax_calc():
 print('\nMyanmar Income Tax Calculation')
 yearly_income = int(input('What is your yearly income in Myanmar? (Kyats): '))
 if yearly_income == 0:
-    print('You owe no income tax!')
+    print('\n--------------------\nYou owe no income tax!\nWhat are you doing by calculating income tax, when you have '
+          'no income!?\n--------------------')
 else:
-    tax_calc()
-
+    tax_calc(yearly_income)
 
 X = input("\n--------------------\nPress Enter to Close")
